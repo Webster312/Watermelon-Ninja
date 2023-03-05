@@ -1,17 +1,8 @@
-class Sword {
-    constructor(color) {
-        this.color = color;
-    }
+const canvas = document.getElementById("canvas");
+canvas.addEventListener("mousemove", handleMouseMove);
 
-    swipe(x, y) {
-        // implementation details
-    }
-
-    update() {
-        // implementation details
-    }
-
-    draw() {
-        // implementation details
-    }
+function handleMouseMove(event) {
+  const x = event.clientX;
+  const y = event.clientY;
+  console.log("Mouse position:", x, y);
 }
