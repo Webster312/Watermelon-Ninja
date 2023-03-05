@@ -32,7 +32,7 @@ window.onload = function () {
     const y = canvas.height;
     const r = randomInt(20, 20);
     const vx = randomInt(-5, 5.5);
-    const vy = randomInt(-10, -4.5);
+    const vy = randomInt(-10.5, -6.5);
     circles.push({x, y, r, vx, vy});
   }
 
@@ -45,7 +45,7 @@ window.onload = function () {
   function animate() {
     clearCanvas();
     
-    if (circles.length < 5) {       // number of animated circles
+    if (circles.length < 2) {       // number of animating circles
       createCircle();
     }
     
