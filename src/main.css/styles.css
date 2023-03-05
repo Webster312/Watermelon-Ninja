@@ -1,14 +1,23 @@
 canvas {
-    border: 1px solid black;
+    border: 2px solid black;
+    //background-color: aliceblue;
    }
-   
+
+
  
  body {
      margin: 0;
      padding: 0;
-     background-color: rgb(234, 234, 212);
+     background-image: url("./images/dojo4.png");
+     background-repeat: no-repeat;
+     background-position: center;
+     background-size: 800px 600px;
  }
  h1 { 
      font-family:'Courier New', Courier, monospace;
+     font-size: xxx-large;
+     color: whitesmoke;
+     text-align: center
+     
      
  }

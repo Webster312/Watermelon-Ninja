@@ -10,6 +10,9 @@ canvas.addEventListener("mousedown", handleMouseDown);
 canvas.addEventListener("mousemove", handleMouseMove);
 canvas.addEventListener("mouseup", handleMouseUp);
 
+
+// mouse events
+
 function handleMouseDown(event) {
     const x = event.clientX;
     const y = event.clientY;
@@ -31,6 +34,8 @@ function handleMouseUp(event) {
   isDragging = false;
 }
 
+
+// drag animations
 
 function drawFlare(x, y, size, opacity) {
     ctx.beginPath();

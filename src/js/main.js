@@ -3,7 +3,7 @@
 window.onload = function () {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
-    const GRAVITY = 0.2;
+    const GRAVITY = 0.1125;
     
     const circles = [];
 
@@ -12,7 +12,7 @@ window.onload = function () {
     function drawCircle(x, y, size) {
       ctx.beginPath();
       ctx.arc(x, y, size, 0, Math.PI * 2, false);
-      ctx.fillStyle = "green";
+      ctx.fillStyle = "limegreen";
       ctx.fill();
     }
     
