@@ -1,0 +1,17 @@
+canvas {
+    margin: 0 auto;
+    display: block;
+    width: 600px;
+    height: 400px;
+  }
+  
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(234, 234, 212);
+}
+h1 { 
+    font-family:'Courier New', Courier, monospace;
+    
+}
