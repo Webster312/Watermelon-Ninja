@@ -1,5 +1,8 @@
 
 
+const watermelonImg = new Image();
+watermelonImg.src = "src/main.css/images/watermelon.webp";
+
 window.onload = function () {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
@@ -10,10 +13,7 @@ window.onload = function () {
 
     // creating the circles 'watermelon'
     function drawCircle(x, y, size) {
-      ctx.beginPath();
-      ctx.arc(x, y, size, 0, Math.PI * 2, false);
-      ctx.fillStyle = "limegreen";
-      ctx.fill();
+         ctx.drawImage(watermelonImg, x-size, y-size, size*3.25, size*3.25);
     }
     
     // clearing the canvas
