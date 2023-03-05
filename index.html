@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Watermelon Ninja</title>
+
+    <script src="./src/js/main.js"></script>
+    <script src="./src/js/sword.js"></script>
+    <script src="./src/js/fruit.js"></script>
+
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(234, 234, 212);
+        }
+
+        h1 {
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Watermelon Ninja</h1>
+    <canvas id="Canvas" style="width: 600px; height: 400px;"></canvas>
+    <script>
+        function setup() {
+            const canvas = document.getElementById('Canvas');
+            const ctx = canvas.getContext('2d');
+
+            // Set canvas dimensions
+            canvas.width = 600;
+            canvas.height = 400;
+
+            // Fill canvas with a color
+            ctx.fillStyle = 'grey';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+        setup();
+    </script>
+</body>
+
+</html>
