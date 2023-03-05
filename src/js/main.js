@@ -1,5 +1,7 @@
 
 
+let score = 0;
+
 const watermelonImg = new Image();
 watermelonImg.src = "src/main.css/images/watermelon.webp";
 
@@ -49,6 +51,8 @@ window.onload = function () {
       createCircle();
     }
     
+    
+
     circles.forEach(circle => {
       updateCircle(circle);
       if (circle.y > canvas.height) {
@@ -58,8 +62,9 @@ window.onload = function () {
         drawCircle(circle.x, circle.y, circle.r);
       }
     });
-    
-    requestAnimationFrame(animate);
+    // adjust frame rate
+    setTimeout(animate, 1000 / 90);
+    //requestAnimationFrame(animate);
   }
 
   animate();

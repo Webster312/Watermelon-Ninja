@@ -14,8 +14,8 @@ canvas.addEventListener("mouseup", handleMouseUp);
 // mouse events
 
 function handleMouseDown(event) {
-    const x = event.clientX;
-    const y = event.clientY;
+    const x = event.clientX - canvas.offsetLeft;
+    const y = event.clientY - canvas.offsetTop;
   isDragging = true;
   startX = x;
   startY = y;
@@ -45,10 +45,19 @@ function drawFlare(x, y, size, opacity) {
   }
 
 
+    //   check for collision function
+function checkCollision(x1, y1, r1, x2, y2, r2) {
+    //console.log("x1: " + x1 + ", y1: " + y1 + ", r1: " + r1 + ", x2: " + x2 + ", y2: " + y2 + ", r2: " + r2);
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    return distance < r1 + r2;
+}
+
+
 
 function animate() {
  
-
   if (isDragging) {
     for (let i = 0; i < 10; i++) {
         const size = i * 1.25;
@@ -56,6 +65,12 @@ function animate() {
         const x = dragX + Math.random() * 10 - 10;
         const y = dragY + Math.random() * 10 - 10;
         drawFlare(x, y, size, opacity);
+
+        //check for collision
+        const flareRadius = size;
+        if  (checkCollision(x, y, flareRadius, dragX - canvas.offsetLeft, dragY - canvas.offsetTop, 10)) {
+            console.log("collision detected");
+        }
       }
     }
 

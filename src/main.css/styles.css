@@ -8,15 +8,15 @@ canvas {
  body {
      margin: 0;
      padding: 0;
-     background-image: url("./images/dojo4.png");
+     background-image: url("./images/dojo.png");
      background-repeat: no-repeat;
      background-position: center;
      background-size: 800px 600px;
  }
  h1 { 
-     /*font-family:'Courier New', Courier, monospace;
+     font-family:'Courier New', Courier, monospace;
      font-size: xxx-large;
-     color: rgb(232, 10, 10);
+     color: rgb(250, 242, 242);
      text-align: center;     
-     */
+     
  }
