@@ -94,11 +94,11 @@ watermelonImg.src = "src/main.css/images/watermelon.webp";
     };
   }
 
-  function handleMouseUp(/*event*/) {
+  function handleMouseUp() {
     isDragging = false;
   }
 
-  function handleMouseDown(/*event*/) {
+  function handleMouseDown() {
     isDragging = true;
   }
 
@@ -107,7 +107,6 @@ watermelonImg.src = "src/main.css/images/watermelon.webp";
 
 /*
 
-///
 
 // drag animations
 

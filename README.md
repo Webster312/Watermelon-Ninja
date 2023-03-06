@@ -12,7 +12,7 @@
 - [x] *setup dojo with canvas*
 - [x] *implement objects 'watermelons'*
 - [x] *mouse detection in canvas*
-- [ ] *collision detection between mouse & watermelon*
+- [x] *collision detection between mouse & watermelon*
 
 ### Milestone 2
 - [ ] *count points and life stats*
