@@ -1,6 +1,6 @@
 # Project1: JavaScript Game
 
-## Game: Watermelon Ninja :watermelon
+## Game: Watermelon Ninja :watermelon:
 
 ### MVP
 - **Dojo with randomly displayed watermelons**
