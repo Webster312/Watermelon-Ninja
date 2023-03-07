@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("./images/Gameover.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 800px 600px;
+    background-color: black;
+}
+h1 { 
+    font-family: papyrus ;
+    font-size: 155px;
+    color: rgb(219, 3, 3);
+    text-align: center;     
+    text-shadow: 8.5px 5.5px black;     
+    margin-top: 150px;
+}
+a:link, a:visited {
+    color: red;
+    text-shadow: 2.5px 2.5px black;
+    text-decoration: none;
+}
+
+a:hover{
+    color: limegreen;
+}
+
+div {
+    text-align: center;
+    font-family: papyrus;
+    font-size: 75px;
+    }

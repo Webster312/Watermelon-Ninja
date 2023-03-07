@@ -15,10 +15,11 @@
 - [x] *collision detection between mouse & watermelon*
 
 ### Milestone 2
-- [ ] *count points and life stats*
-- [x] *show flares when slicing*
+- [x] *count points and life stats*
+- [x] *add game over page*
+- [ ] *show flares when slicing*
 - [ ] *increase levels (count of watermelons) if certain point count is reached*
-- [ ] *add game over page*
+
 
 ### Milestone 3
 - [ ] *add object Banana to increase life*
