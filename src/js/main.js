@@ -1,5 +1,5 @@
 let score = 0;
-let lives = 500;
+let lives = 5;
 const circles = [];
 let flare = [];
 
