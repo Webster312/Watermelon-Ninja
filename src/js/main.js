@@ -1,6 +1,7 @@
 let score = 0;
-let lives = 3;
+let lives = 500000;
 const circles = [];
+let flare = [];
 
 const watermelonImg = new Image();
 watermelonImg.src = "src/main.css/images/watermelon.webp";
@@ -27,7 +28,7 @@ function clearCanvas() {
 
 // generating random circles
 function randomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+  return Math.floor(Math.random() * (max - min + 5) + min);
 }
 
 // creating the circles 'watermelons'
@@ -71,7 +72,6 @@ function animate() {
       const index = circles.indexOf(circle);
       circles.splice(index, 1);
       lives--;
-      
     } else {
       drawCircle(circle.x, circle.y, circle.r);
     }
@@ -79,7 +79,7 @@ function animate() {
   });
 
   // check if player has lost
-  if (lives <= -1) {
+  if (lives <= -0) {
     gameOver();
     return;
   }
@@ -91,7 +91,7 @@ function animate() {
 
 // detect collision
 function detectCollision(circle, mouseX, mouseY) {
-  const buffer = 25;
+  const buffer = 80;
   const distance = Math.sqrt(
     Math.pow(circle.x - mouseX, 2) + Math.pow(circle.y - mouseY, 2)
   );
@@ -102,6 +102,31 @@ function handleMouseMove(event) {
   if (isDragging) {
     dragX = event.clientX - canvas.offsetLeft;
     dragY = event.clientY - canvas.offsetTop;
+
+    // draw trail circles
+    let flareCircle = { x: dragX, y: dragY, r: 18, opacity: 1 };
+    flare.push(flareCircle);
+    for (let i = 0; i < flare.length; i++) {
+      let circle = flare[i];
+      ctx.beginPath();
+      ctx.arc(circle.x, circle.y, circle.r, 0, 2 * Math.PI);
+      ctx.fillStyle = `rgba(240, 240, 1, ${circle.opacity})`;
+      ctx.fill();
+      circle.opacity -= 0.05; // decrease opacity for next frame
+      circle.r -= 0.2; // decrease radius for next frame
+      if (circle.opacity <= 0) {
+        flare.splice(i, 1); // remove circle when it becomes transparent
+      }
+    }
+
+    // draw animated circle
+    let radius = 8;
+    ctx.beginPath();
+    ctx.arc(dragX, dragY, radius, 0, 2 * Math.PI);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "rgba(240, 1, 66, 0.8)";
+    ctx.stroke();
+    radius -= 5;
   }
 }
 
@@ -117,13 +142,13 @@ function handleMouseDown() {
 function drawScore() {
   ctx.fillStyle = "white";
   ctx.font = "36px papyrus";
-  ctx.fillText("Score: " + score, 10, 30);
+  ctx.fillText("Score: " + score, 10, 35);
 }
 
 function drawLives() {
   ctx.fillStyle = "white";
   ctx.font = "40px papyrus";
-  ctx.fillText(lives + ":Lives", 575, 35);
+  ctx.fillText(lives + ":Lives", 630, 35);
 }
 
 function gameOver() {
@@ -138,40 +163,4 @@ function gameOver() {
   gameOverLink.click();
 }
 
-
-
-
 animate();
-
-/*
-
-
-// drag animations
-
-function drawFlare(x, y, size, opacity) {
-    ctx.beginPath();
-    ctx.arc(x, y, size, 0.5, Math.PI * 10, false);
-    ctx.fillStyle = `rgba(255, 255, 0, ${opacity})`;
-    ctx.fill();
-  }
-
-
-
-function animate() {
- 
-  if (isDragging) {
-    for (let i = 0; i < 10; i++) {
-        const size = i * 1.25;
-        const opacity = 1 - i / 10;
-        const x = dragX + Math.random() * 10 - 10;
-        const y = dragY + Math.random() * 10 - 10;
-        drawFlare(x, y, size, opacity);
-
-       
-      }
-    }
-
-  requestAnimationFrame(animate);
-}
-
-*/
