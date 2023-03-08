@@ -18,9 +18,10 @@
 - [x] *count points and live stats*
 - [x] *add game over page*
 - [x] *show flares when slicing*
-- [ ] *increase levels (count of watermelons) if certain point count is reached*
+- [x] *increase levels (count of watermelons) if certain point count is reached*
 
 
 ### Milestone 3
+- [ ] *add sound effects
 - [ ] *add object Banana to increase life*
 - [ ] *add object bomb to loose all life stats*
