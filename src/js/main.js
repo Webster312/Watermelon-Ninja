@@ -2,12 +2,19 @@ let score = 0;
 let lives = 5;
 let flare = [];
 const circles = [];
-const collisionSound = new Audio(`./src/sound/ES_Water Splash Throw 1 - SFX Producer.mp3`);
-const sliceSound = new Audio(`./src/sound/ES_Whip Whoosh Swoosh 2 - SFX Producer.mp3`);
+const collisionSound = new Audio(
+  `./src/sound/ES_Water Splash Throw 1 - SFX Producer.mp3`
+);
+const sliceSound = new Audio(
+  `./src/sound/ES_Whip Whoosh Swoosh 2 - SFX Producer.mp3`
+);
 
-
+const ninjaImg = new Image();
+ninjaImg.src = "src/main.css/images/watermelon_ninja.webp";
 const watermelonImg = new Image();
 watermelonImg.src = "src/main.css/images/watermelon.webp";
+const slicedWatermelonImg = new Image();
+slicedWatermelonImg.src = "src/main.css/images/slicedWatermelon.png";
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -42,29 +49,32 @@ function createCircle() {
   const vx = randomInt(-2, 2);
   const vy = randomInt(-7.5, -7);
 
- // Create 2 circles when score is between 10 and 19
- if (score >= 10 && score < 20) {
-  const x1 = randomInt(r * 2, canvas.width - r * 2);
-  const x2 = randomInt(r * 2, canvas.width - r * 2);
-  circles.push({ x: x1, y: canvas.height - 45, r, vx, vy });
-  circles.push({ x: x2, y: canvas.height - 45, r, vx, vy });
-}
+  // Create 2 circles when score is between 10 and 19
+  if (score >= 10 && score < 20) {
+    const x1 = randomInt(r * 2, canvas.width - r * 2);
+    const x2 = randomInt(r * 2, canvas.width - r * 2);
+    circles.push({ x: x1, y: canvas.height - 45, r, vx, vy });
+    circles.push({ x: x2, y: canvas.height - 45, r, vx, vy });
+  }
 
-// Create 3 circles when score is 20 or higher
-else if (score >= 20) {
-  const x1 = randomInt(r * 2, canvas.width / 3 - r * 2);
-  const x2 = randomInt(canvas.width / 3 + r * 2, canvas.width / 3 * 2 - r * 2);
-  const x3 = randomInt(canvas.width / 3 * 2 + r * 2, canvas.width - r * 2);
-  circles.push({ x: x1, y: canvas.height - 45, r, vx, vy });
-  circles.push({ x: x2, y: canvas.height - 45, r, vx, vy });
-  circles.push({ x: x3, y: canvas.height - 45, r, vx, vy });
-}
+  // Create 3 circles when score is 20 or higher
+  else if (score >= 20) {
+    const x1 = randomInt(r * 2, canvas.width / 3 - r * 2);
+    const x2 = randomInt(
+      canvas.width / 3 + r * 2,
+      (canvas.width / 3) * 2 - r * 2
+    );
+    const x3 = randomInt((canvas.width / 3) * 2 + r * 2, canvas.width - r * 2);
+    circles.push({ x: x1, y: canvas.height - 45, r, vx, vy });
+    circles.push({ x: x2, y: canvas.height - 45, r, vx, vy });
+    circles.push({ x: x3, y: canvas.height - 45, r, vx, vy });
+  }
 
-// Create a single circle for all other scores
-else {
-  const x = randomInt(r * 2, canvas.width - r * 2);
-  circles.push({ x, y: canvas.height - 50, r, vx, vy });
-}
+  // Create a single circle for all other scores
+  else {
+    const x = randomInt(r * 2, canvas.width - r * 2);
+    circles.push({ x, y: canvas.height - 50, r, vx, vy });
+  }
 
   console.log(circles);
 }
@@ -98,7 +108,6 @@ function animate() {
 
       // play collision sound
       collisionSound.play();
-
     } else if (circle.y > canvas.height) {
       const index = circles.indexOf(circle);
       circles.splice(index, 1);
@@ -122,7 +131,7 @@ function animate() {
 
 // detect collision
 function detectCollision(circle, mouseX, mouseY) {
-  const buffer = 100;
+  const buffer = 500;
   const distance = Math.sqrt(
     Math.pow(circle.x - mouseX, 2) + Math.pow(circle.y - mouseY, 2)
   );
@@ -133,8 +142,8 @@ function handleMouseMove(event) {
   if (isDragging) {
     dragX = event.clientX - canvas.offsetLeft;
     dragY = event.clientY - canvas.offsetTop;
-     // play slice sound
-   sliceSound.play();
+    // play slice sound
+    sliceSound.play();
     // draw flare circles
     let flareCircle = { x: dragX, y: dragY, r: 18, opacity: 1 };
     flare.push(flareCircle);
@@ -173,14 +182,16 @@ function handleMouseDown() {
 // score function
 function drawScore() {
   ctx.fillStyle = "white";
-  ctx.font = "36px papyrus";
-  ctx.fillText("Score: " + score, 10, 35);
+  ctx.font = "48px papyrus";
+  ctx.fillText(score, 28, 490);
+  ctx.drawImage(slicedWatermelonImg, 0, 395);
 }
 
 function drawLives() {
   ctx.fillStyle = "white";
   ctx.font = "40px papyrus";
-  ctx.fillText(lives + ":Lives", 630, 35);
+  ctx.fillText(lives, 750, 490);
+  ctx.drawImage(ninjaImg, 740, 400, 55, 55);
 }
 
 function gameOver() {
