@@ -17,7 +17,7 @@
 ### Milestone 2
 - [x] *count points and live stats*
 - [x] *add game over page*
-- [ ] *show flares when slicing*
+- [x] *show flares when slicing*
 - [ ] *increase levels (count of watermelons) if certain point count is reached*
 
 

@@ -36,8 +36,8 @@ function createCircle() {
   const x = canvas.width / 2; //randomInt(5, canvas.width);
   const y = canvas.height - 50;
   const r = randomInt(25, 25);
-  const vx = randomInt(-10, 6.5);
-  const vy = randomInt(-8.5, -8.5);
+  const vx = randomInt(-10, 5.5);
+  const vy = randomInt(-6.5, -5.5);
   circles.push({ x, y, r, vx, vy });
   console.log(circles);
 }
@@ -45,7 +45,7 @@ function createCircle() {
 function updateCircle(circle) {
   circle.x += circle.vx;
   circle.y += circle.vy;
-  circle.vy += 0.1125; //adjust this to change the gravity
+  circle.vy += 0.03625; //adjust this to change the gravity
 }
 
 // animating the circles
@@ -103,7 +103,7 @@ function handleMouseMove(event) {
     dragX = event.clientX - canvas.offsetLeft;
     dragY = event.clientY - canvas.offsetTop;
 
-    // draw trail circles
+    // draw flare circles
     let flareCircle = { x: dragX, y: dragY, r: 18, opacity: 1 };
     flare.push(flareCircle);
     for (let i = 0; i < flare.length; i++) {
