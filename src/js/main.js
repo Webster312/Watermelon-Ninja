@@ -1,5 +1,5 @@
 let score = 0;
-let lives = 5;
+let lives = 3;
 let flare = [];
 const circles = [];
 const collisionSound = new Audio(
@@ -22,9 +22,11 @@ const ctx = canvas.getContext("2d");
 let isDragging = false;
 let dragX, dragY;
 
+
 canvas.addEventListener("mousedown", handleMouseDown);
 canvas.addEventListener("mousemove", handleMouseMove);
 canvas.addEventListener("mouseup", handleMouseUp);
+
 
 // creating the circles 'watermelon'
 function drawCircle(x, y, size) {
@@ -65,15 +67,15 @@ function createCircle() {
       (canvas.width / 3) * 2 - r * 2
     );
     const x3 = randomInt((canvas.width / 3) * 2 + r * 2, canvas.width - r * 2);
-    circles.push({ x: x1, y: canvas.height - 45, r, vx, vy });
-    circles.push({ x: x2, y: canvas.height - 45, r, vx, vy });
-    circles.push({ x: x3, y: canvas.height - 45, r, vx, vy });
+    circles.push({ x: x1, y: canvas.height - 55, r, vx, vy });
+    circles.push({ x: x2, y: canvas.height - 55, r, vx, vy });
+    circles.push({ x: x3, y: canvas.height - 55, r, vx, vy });
   }
 
   // Create a single circle for all other scores
   else {
     const x = randomInt(r * 2, canvas.width - r * 2);
-    circles.push({ x, y: canvas.height - 50, r, vx, vy });
+    circles.push({ x, y: canvas.height - 55, r, vx, vy });
   }
 
   console.log(circles);
@@ -82,7 +84,18 @@ function createCircle() {
 function updateCircle(circle) {
   circle.x += circle.vx;
   circle.y += circle.vy;
-  circle.vy += 0.03625; //adjust to change the gravity
+  circle.vy += 0.0255; //adjust to change the gravity
+
+  //check for collision with sidewalls
+  if (circle.x - circle.r < 0){
+    circle.x = circle.r;
+    circle.vx = -circle.vx;
+  } else if (circle.x + circle.r > canvas.width){
+    circle.x = canvas.width - circle.r;
+    circle.vx = -circle.vx;
+  }
+  if (circle.y - circle.r < 0 || circle.y + circle.r > canvas.height){
+}
 }
 
 // animating the circles
