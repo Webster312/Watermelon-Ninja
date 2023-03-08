@@ -1,5 +1,5 @@
 let score = 0;
-let lives = 500000;
+let lives = 500;
 const circles = [];
 let flare = [];
 
@@ -18,7 +18,7 @@ canvas.addEventListener("mouseup", handleMouseUp);
 
 // creating the circles 'watermelon'
 function drawCircle(x, y, size) {
-  ctx.drawImage(watermelonImg, x - size, y - size, size * 3.25, size * 3.25);
+  ctx.drawImage(watermelonImg, x - size, y - size, size * 3.5, size * 3.5);
 }
 
 // clearing the canvas
@@ -33,12 +33,36 @@ function randomInt(min, max) {
 
 // creating the circles 'watermelons'
 function createCircle() {
-  const x = canvas.width / 2; //randomInt(5, canvas.width);
-  const y = canvas.height - 50;
+  const x = canvas.width / 5; //randomInt(5, canvas.width);
+  const y = canvas.height - 45;
   const r = randomInt(25, 25);
-  const vx = randomInt(-10, 5.5);
-  const vy = randomInt(-6.5, -5.5);
-  circles.push({ x, y, r, vx, vy });
+  const vx = randomInt(-2, 2);
+  const vy = randomInt(-7.5, -7);
+
+ // Create 2 circles when score is between 10 and 19
+ if (score >= 10 && score < 20) {
+  const x1 = randomInt(r * 2, canvas.width - r * 2);
+  const x2 = randomInt(r * 2, canvas.width - r * 2);
+  circles.push({ x: x1, y: canvas.height - 45, r, vx, vy });
+  circles.push({ x: x2, y: canvas.height - 45, r, vx, vy });
+}
+
+// Create 3 circles when score is 20 or higher
+else if (score >= 20) {
+  const x1 = randomInt(r * 2, canvas.width / 3 - r * 2);
+  const x2 = randomInt(canvas.width / 3 + r * 2, canvas.width / 3 * 2 - r * 2);
+  const x3 = randomInt(canvas.width / 3 * 2 + r * 2, canvas.width - r * 2);
+  circles.push({ x: x1, y: canvas.height - 45, r, vx, vy });
+  circles.push({ x: x2, y: canvas.height - 45, r, vx, vy });
+  circles.push({ x: x3, y: canvas.height - 45, r, vx, vy });
+}
+
+// Create a single circle for all other scores
+else {
+  const x = randomInt(r * 2, canvas.width - r * 2);
+  circles.push({ x, y: canvas.height - 50, r, vx, vy });
+}
+
   console.log(circles);
 }
 
@@ -91,7 +115,7 @@ function animate() {
 
 // detect collision
 function detectCollision(circle, mouseX, mouseY) {
-  const buffer = 80;
+  const buffer = 100;
   const distance = Math.sqrt(
     Math.pow(circle.x - mouseX, 2) + Math.pow(circle.y - mouseY, 2)
   );
