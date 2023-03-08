@@ -1,7 +1,10 @@
 let score = 0;
 let lives = 5;
-const circles = [];
 let flare = [];
+const circles = [];
+const collisionSound = new Audio(`./src/sound/ES_Water Splash Throw 1 - SFX Producer.mp3`);
+const sliceSound = new Audio(`./src/sound/ES_Whip Whoosh Swoosh 2 - SFX Producer.mp3`);
+
 
 const watermelonImg = new Image();
 watermelonImg.src = "src/main.css/images/watermelon.webp";
@@ -69,7 +72,7 @@ else {
 function updateCircle(circle) {
   circle.x += circle.vx;
   circle.y += circle.vy;
-  circle.vy += 0.03625; //adjust this to change the gravity
+  circle.vy += 0.03625; //adjust to change the gravity
 }
 
 // animating the circles
@@ -92,6 +95,10 @@ function animate() {
       score++;
       const index = circles.indexOf(circle);
       circles.splice(index, 1);
+
+      // play collision sound
+      collisionSound.play();
+
     } else if (circle.y > canvas.height) {
       const index = circles.indexOf(circle);
       circles.splice(index, 1);
@@ -126,7 +133,8 @@ function handleMouseMove(event) {
   if (isDragging) {
     dragX = event.clientX - canvas.offsetLeft;
     dragY = event.clientY - canvas.offsetTop;
-
+     // play slice sound
+   sliceSound.play();
     // draw flare circles
     let flareCircle = { x: dragX, y: dragY, r: 18, opacity: 1 };
     flare.push(flareCircle);
