@@ -28,6 +28,9 @@ gameMusic.play();
 canvas.addEventListener("mousedown", handleMouseDown);
 canvas.addEventListener("mousemove", handleMouseMove);
 canvas.addEventListener("mouseup", handleMouseUp);
+document.body.addEventListener('click', function() {
+  gameMusic.play();
+});
 
 // creating the circles 'watermelon'
 function drawCircle(x, y, size) {
