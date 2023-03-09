@@ -138,7 +138,7 @@ function animate() {
   }
 
   // adjust frame rate
-  setTimeout(animate, 1000 / 75);
+  setTimeout(animate, 1000 / 90);
   //requestAnimationFrame(animate);
 }
 
