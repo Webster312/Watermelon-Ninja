@@ -2,13 +2,14 @@ let score = 0;
 let lives = 3;
 let flare = [];
 const circles = [];
+const gameMusic = document.getElementById("gameMusic");
 const collisionSound = new Audio(
   `./src/sound/ES_Water Splash Throw 1 - SFX Producer.mp3`
 );
 const sliceSound = new Audio(
   `./src/sound/ES_Whip Whoosh Swoosh 2 - SFX Producer.mp3`
 );
-const gameMusic = document.getElementById("gameMusic");
+
 const ninjaImg = new Image();
 ninjaImg.src = "src/main.css/images/watermelon_ninja.webp";
 const watermelonImg = new Image();
@@ -21,6 +22,8 @@ const ctx = canvas.getContext("2d");
 
 let isDragging = false;
 let dragX, dragY;
+
+gameMusic.play();
 
 canvas.addEventListener("mousedown", handleMouseDown);
 canvas.addEventListener("mousemove", handleMouseMove);
@@ -216,7 +219,5 @@ function gameOver() {
   // trigger click event to execute link
   gameOverLink.click();
 }
-
-gameMusic.play();
 
 animate();
