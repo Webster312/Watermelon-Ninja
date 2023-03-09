@@ -23,5 +23,6 @@
 
 ### Milestone 3
 - [x] *add sound effects
+- [x] *add game play music
 - [ ] *add object Banana to increase life*
 - [ ] *add object bomb to loose all life stats*

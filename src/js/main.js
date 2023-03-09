@@ -8,14 +8,13 @@ const collisionSound = new Audio(
 const sliceSound = new Audio(
   `./src/sound/ES_Whip Whoosh Swoosh 2 - SFX Producer.mp3`
 );
-const gameMusic = document.getElementById('gameMusic')
+const gameMusic = document.getElementById("gameMusic");
 const ninjaImg = new Image();
 ninjaImg.src = "src/main.css/images/watermelon_ninja.webp";
 const watermelonImg = new Image();
 watermelonImg.src = "src/main.css/images/watermelon.webp";
 const slicedWatermelonImg = new Image();
 slicedWatermelonImg.src = "src/main.css/images/slicedWatermelon.png";
-
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -219,6 +218,5 @@ function gameOver() {
 }
 
 gameMusic.play();
+
 animate();
-
-

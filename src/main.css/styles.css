@@ -1,22 +1,23 @@
 canvas {
     /* border: 1px solid rgb(17, 16, 16); */
-        margin-top: -95px;
-   }
+    margin-top: -95px;
+}
 
- body {
-     margin: 0;
-     padding: 0;
-     background-image: url("./images/dojo.png");
-     background-repeat: no-repeat;
-     background-position: center;
-     background-size: 800px 600px;
-     background-color: black;
- }
- h1 { 
-     font-family: papyrus ;
-     font-size: 75px;
-     color: rgb(219, 3, 3);
-     text-align: center;     
-     text-shadow: 3.5px 2.5px black;     
-     margin-top: -5px;
- }
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("./images/dojo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 800px 600px;
+    background-color: black;
+}
+
+h1 {
+    font-family: papyrus;
+    font-size: 75px;
+    color: rgb(219, 3, 3);
+    text-align: center;
+    text-shadow: 3.5px 2.5px black;
+    margin-top: -5px;
+}
