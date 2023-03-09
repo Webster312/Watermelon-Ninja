@@ -8,7 +8,7 @@ const collisionSound = new Audio(
 const sliceSound = new Audio(
   `./src/sound/ES_Whip Whoosh Swoosh 2 - SFX Producer.mp3`
 );
-
+const gameMusic = document.getElementById('gameMusic')
 const ninjaImg = new Image();
 ninjaImg.src = "src/main.css/images/watermelon_ninja.webp";
 const watermelonImg = new Image();
@@ -16,17 +16,16 @@ watermelonImg.src = "src/main.css/images/watermelon.webp";
 const slicedWatermelonImg = new Image();
 slicedWatermelonImg.src = "src/main.css/images/slicedWatermelon.png";
 
+
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 let isDragging = false;
 let dragX, dragY;
 
-
 canvas.addEventListener("mousedown", handleMouseDown);
 canvas.addEventListener("mousemove", handleMouseMove);
 canvas.addEventListener("mouseup", handleMouseUp);
-
 
 // creating the circles 'watermelon'
 function drawCircle(x, y, size) {
@@ -55,8 +54,8 @@ function createCircle() {
   if (score >= 10 && score < 20) {
     const x1 = randomInt(r * 2, canvas.width - r * 2);
     const x2 = randomInt(r * 2, canvas.width - r * 2);
-    circles.push({ x: x1, y: canvas.height - 45, r, vx, vy });
-    circles.push({ x: x2, y: canvas.height - 45, r, vx, vy });
+    circles.push({ x: x1, y: canvas.height - 55, r, vx, vy });
+    circles.push({ x: x2, y: canvas.height - 55, r, vx, vy });
   }
 
   // Create 3 circles when score is 20 or higher
@@ -84,18 +83,18 @@ function createCircle() {
 function updateCircle(circle) {
   circle.x += circle.vx;
   circle.y += circle.vy;
-  circle.vy += 0.0255; //adjust to change the gravity
+  circle.vy += 0.06; //adjust to change the gravity
 
   //check for collision with sidewalls
-  if (circle.x - circle.r < 0){
+  if (circle.x - circle.r < 0) {
     circle.x = circle.r;
     circle.vx = -circle.vx;
-  } else if (circle.x + circle.r > canvas.width){
+  } else if (circle.x + circle.r > canvas.width) {
     circle.x = canvas.width - circle.r;
     circle.vx = -circle.vx;
   }
-  if (circle.y - circle.r < 0 || circle.y + circle.r > canvas.height){
-}
+  if (circle.y - circle.r < 0 || circle.y + circle.r > canvas.height) {
+  }
 }
 
 // animating the circles
@@ -173,7 +172,7 @@ function handleMouseMove(event) {
       }
     }
 
-    // draw animated circle
+    // draw animated flares
     let radius = 8;
     ctx.beginPath();
     ctx.arc(dragX, dragY, radius, 0, 2 * Math.PI);
@@ -219,4 +218,7 @@ function gameOver() {
   gameOverLink.click();
 }
 
+gameMusic.play();
 animate();
+
+
