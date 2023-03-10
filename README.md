@@ -1,4 +1,4 @@
-# Watermelon Ninja
+# Watermelon Ninja 🍉 🥷
 
 Welcome to Watermelon Ninja, a fun and simple game where you play as a ninja slicing watermelons with a sword. Your objective is to slice as many watermelons as you can without missing any. Be careful, as missing a watermelon will cost you one of your three lives.
 
